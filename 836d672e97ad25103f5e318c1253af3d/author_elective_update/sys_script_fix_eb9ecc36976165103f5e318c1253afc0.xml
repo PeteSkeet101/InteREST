@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_fix">
+    <sys_script_fix action="DELETE">
+        <before>false</before>
+        <description/>
+        <name>test new BR</name>
+        <record_for_rollback>true</record_for_rollback>
+        <script><![CDATA[var br = new GlideRecord('sys_script');
+br.name = 'test2';
+br.active = true;
+br.insert;
+]]></script>
+        <sys_class_name>sys_script_fix</sys_class_name>
+        <sys_created_by>pete</sys_created_by>
+        <sys_created_on>2023-03-16 15:48:38</sys_created_on>
+        <sys_id>eb9ecc36976165103f5e318c1253afc0</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>test new BR</sys_name>
+        <sys_package display_value="Interest" source="x_653938_interest">836d672e97ad25103f5e318c1253af3d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Interest">836d672e97ad25103f5e318c1253af3d</sys_scope>
+        <sys_update_name>sys_script_fix_eb9ecc36976165103f5e318c1253afc0</sys_update_name>
+        <sys_updated_by>pete</sys_updated_by>
+        <sys_updated_on>2023-03-16 15:49:06</sys_updated_on>
+        <unloadable>false</unloadable>
+    </sys_script_fix>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Interest">836d672e97ad25103f5e318c1253af3d</application>
+        <file_path/>
+        <instance_id>01cab999db41495010543feb6896194d</instance_id>
+        <instance_name>dev120844</instance_name>
+        <name>sys_script_fix_eb9ecc36976165103f5e318c1253afc0</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sys_script_fix"&gt;&lt;sys_script_fix action="INSERT_OR_UPDATE"&gt;&lt;before&gt;false&lt;/before&gt;&lt;description/&gt;&lt;name&gt;test new BR&lt;/name&gt;&lt;record_for_rollback&gt;true&lt;/record_for_rollback&gt;&lt;script&gt;&lt;![CDATA[var br = new GlideRecord('sys_script');
+br.name = 'test2';
+br.active = true;
+br.insert;
+]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;sys_script_fix&lt;/sys_class_name&gt;&lt;sys_created_by&gt;pete&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2023-03-16 15:48:38&lt;/sys_created_on&gt;&lt;sys_id&gt;eb9ecc36976165103f5e318c1253afc0&lt;/sys_id&gt;&lt;sys_mod_count&gt;1&lt;/sys_mod_count&gt;&lt;sys_name&gt;test new BR&lt;/sys_name&gt;&lt;sys_package display_value="Interest" source="x_653938_interest"&gt;836d672e97ad25103f5e318c1253af3d&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Interest"&gt;836d672e97ad25103f5e318c1253af3d&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_script_fix_eb9ecc36976165103f5e318c1253afc0&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;pete&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2023-03-16 15:49:06&lt;/sys_updated_on&gt;&lt;unloadable&gt;false&lt;/unloadable&gt;&lt;/sys_script_fix&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>1664537813</payload_hash>
+        <record_name>test new BR</record_name>
+        <reverted_from/>
+        <source>c36d672e97ad25103f5e318c1253af3f</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>pete</sys_created_by>
+        <sys_created_on>2023-03-16 15:49:06</sys_created_on>
+        <sys_id>ae2fcc36976165103f5e318c1253afa0</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>186eb1c4f9b0000001</sys_recorded_at>
+        <sys_updated_by>pete</sys_updated_by>
+        <sys_updated_on>2023-03-16 15:49:06</sys_updated_on>
+        <type>Fix Script</type>
+        <update_guid>a62fcc36a8616510731bc154e346e8a0</update_guid>
+        <update_guid_history>a62fcc36a8616510731bc154e346e8a0:1664537813,f30f48366c616510321bc96747e7ba8f:52477319</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>pete</sys_created_by>
+        <sys_created_on>2023-03-16 15:50:56</sys_created_on>
+        <sys_db_object display_value="" name="sys_script_fix">sys_script_fix</sys_db_object>
+        <sys_id>555a978a7ec2474c844d4da0409fcea4</sys_id>
+        <sys_metadata>eb9ecc36976165103f5e318c1253afc0</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>test new BR</sys_name>
+        <sys_package display_value="Interest" source="x_653938_interest">836d672e97ad25103f5e318c1253af3d</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Interest">836d672e97ad25103f5e318c1253af3d</sys_scope>
+        <sys_scope_delete display_value="">09fe13ff0ab54d3c9503c8ae7b3cb2d9</sys_scope_delete>
+        <sys_update_name>sys_script_fix_eb9ecc36976165103f5e318c1253afc0</sys_update_name>
+        <sys_update_version display_value="sys_script_fix_eb9ecc36976165103f5e318c1253afc0">ae2fcc36976165103f5e318c1253afa0</sys_update_version>
+        <sys_updated_by>pete</sys_updated_by>
+        <sys_updated_on>2023-03-16 15:50:56</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

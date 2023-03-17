@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="target_url" label="Enter the target URL" language="en" table="x_653938_interest_target">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>target_url</element>
+            <help/>
+            <hint/>
+            <label>Enter the target URL</label>
+            <language>en</language>
+            <name>x_653938_interest_target</name>
+            <plural>Enter the target URLs</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>pete</sys_created_by>
+            <sys_created_on>2023-03-16 15:31:40</sys_created_on>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_name>Enter the target URL</sys_name>
+            <sys_package display_value="Interest" source="x_653938_interest">836d672e97ad25103f5e318c1253af3d</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Interest">836d672e97ad25103f5e318c1253af3d</sys_scope>
+            <sys_update_name>sys_documentation_x_653938_interest_target_target_url_en</sys_update_name>
+            <sys_updated_by>pete</sys_updated_by>
+            <sys_updated_on>2023-03-16 15:32:27</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>
