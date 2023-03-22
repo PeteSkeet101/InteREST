@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sysevent_script_action">
+    <sysevent_script_action action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <condition_script/>
+        <description/>
+        <event_name>x_653938_interest.InteREST_incident_open</event_name>
+        <name>interest open incident</name>
+        <order>100</order>
+        <script><![CDATA[gs.info('PS: running script action');
+
+try {
+    var r = new sn_ws.RESTMessageV2('');
+    r.setEndpoint(event.parm1+'/api/now/table/incident?sysparm_fields=number&short_descrption='+current.short_description+'&correlation_id='+current.correlation_id+'&description='+current.description);
+    r.setHttpMethod("post");
+    r.setBasicAuth("pete", "Int3rn3t@)@!");
+//     r.setStringParameterNoEscape("correlation_id", current.number);
+//     r.setStringParameterNoEscape("short_description", current.short_description);
+//     r.setStringParameterNoEscape("description", current.description);
+// 	r.setRequestHeader("Accept","application/json");
+	//r.setQueryParameter('sysparm_fields','number');
+	
+    var response = r.execute();
+    var responseBody = response.getBody();
+	gs.info('AS line 15 '+response.getErrorMessage());
+    var json = responseBody;
+    var obj = JSON.parse(json); //define JSON parsing for the response JSON file to decode
+    var foundNumber = obj.result.number; //decoded dev2 newly created incident 
+	gs.info('PS foundNumber is : '+ foundNumber);
+	
+    current.correlation_id = foundNumber;
+    gs.info("The generated sysid from Dev1 instance is :  " + foundNumber); //log sys_id		
+    var httpStatus = response.getStatusCode();
+} catch (ex) {
+    gs.info('script action interest open incident app gave error: ' + ex.message);
+}]]></script>
+        <synchronous>false</synchronous>
+        <sys_class_name>sysevent_script_action</sys_class_name>
+        <sys_created_by>pete</sys_created_by>
+        <sys_created_on>2023-03-20 18:24:43</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>329491c09775e9103f5e318c1253af24</sys_id>
+        <sys_mod_count>20</sys_mod_count>
+        <sys_name>interest open incident</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Interest" source="x_653938_interest">836d672e97ad25103f5e318c1253af3d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Interest">836d672e97ad25103f5e318c1253af3d</sys_scope>
+        <sys_update_name>sysevent_script_action_329491c09775e9103f5e318c1253af24</sys_update_name>
+        <sys_updated_by>pete</sys_updated_by>
+        <sys_updated_on>2023-03-22 13:27:34</sys_updated_on>
+    </sysevent_script_action>
+</record_update>
