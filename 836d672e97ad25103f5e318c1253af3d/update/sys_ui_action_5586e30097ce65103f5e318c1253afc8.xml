@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_ui_action">
     <sys_ui_action action="INSERT_OR_UPDATE">
-        <action_name/>
+        <action_name>test the connection</action_name>
         <active>true</active>
-        <client>true</client>
+        <client>false</client>
         <client_script_v2><![CDATA[function onClick(g_form) {
 
 }]]></client_script_v2>
         <comments/>
-        <condition>!current.target_url.nil()</condition>
+        <condition/>
         <form_action>true</form_action>
         <form_button>true</form_button>
         <form_button_v2>false</form_button_v2>
         <form_context_menu>false</form_context_menu>
-        <form_link>false</form_link>
+        <form_link>true</form_link>
         <form_menu_button_v2>false</form_menu_button_v2>
         <form_style/>
         <format_for_configurable_workspace>false</format_for_configurable_workspace>
@@ -28,28 +28,35 @@
         <list_style/>
         <messages/>
         <name>Test Connection</name>
-        <onclick/>
-        <order>100</order>
-        <script><![CDATA[
- var r = new sn_ws.RESTMessageV2('');
+        <onclick>testConn()</onclick>
+        <order>500</order>
+        <script><![CDATA[gs.info('Running the UI action for test connection');
+action.setRedirectURL(current);
+current.update();
 
-    // get record from target table
-    var endPoint = new GlideRecord('x_653938_interest_target');
-    endPoint.get(event.parm1);
+testConnection = new InteRESTIncidentUtils(current);
+var testResult = testConnection.testConn();
+gs.info('Test result is ' + testResult.result.toString());
 
-    //credentials 
-    var user = endPoint.getValue('restuser');
-    var pwrd = endPoint.getValue('restpwd');
-    r.setEndpoint(endPoint.getValue('target_url') + '/api/now/table/incident?sysparm_fields=number');
-    r.setBasicAuth(user, pwrd);
-    r.setRequestHeader('Content-Type', 'application/json');
-    r.setRequestBody(global.JSON.stringify(requestBody));
-    r.setHttpMethod("get");
-    r.setLogLevel('all');
-
-
-alert('Connection was successful');]]></script>
-        <show_insert>true</show_insert>
+switch (testResult.result.toString()){
+	case '200':
+	gs.info('returned 200 successful ');	
+	gs.addInfoMessage("Test Successful. ");
+	
+	break;
+	case'0':
+	gs.addErrorMessage('Error: Host not found, please check the host name');
+	break;
+		
+	case '401':
+	gs.addErrorMessage('Error: username / password not accepted, please check and retry.');
+	break;
+	default:
+		gs.addErrorMessage('Unknown errror: '+  testResult.result.toString());
+		
+}
+]]></script>
+        <show_insert>false</show_insert>
         <show_multiple_update>false</show_multiple_update>
         <show_query>false</show_query>
         <show_update>true</show_update>
@@ -59,7 +66,7 @@ alert('Connection was successful');]]></script>
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>5586e30097ce65103f5e318c1253afc8</sys_id>
-        <sys_mod_count>3</sys_mod_count>
+        <sys_mod_count>44</sys_mod_count>
         <sys_name>Test Connection</sys_name>
         <sys_overrides/>
         <sys_package display_value="InteREST" source="x_653938_interest">836d672e97ad25103f5e318c1253af3d</sys_package>
@@ -67,9 +74,9 @@ alert('Connection was successful');]]></script>
         <sys_scope display_value="InteREST">836d672e97ad25103f5e318c1253af3d</sys_scope>
         <sys_update_name>sys_ui_action_5586e30097ce65103f5e318c1253afc8</sys_update_name>
         <sys_updated_by>pete</sys_updated_by>
-        <sys_updated_on>2023-04-02 15:10:31</sys_updated_on>
+        <sys_updated_on>2023-04-03 19:29:59</sys_updated_on>
         <table>x_653938_interest_target</table>
         <ui11_compatible>true</ui11_compatible>
-        <ui16_compatible>false</ui16_compatible>
+        <ui16_compatible>true</ui16_compatible>
     </sys_ui_action>
 </record_update>

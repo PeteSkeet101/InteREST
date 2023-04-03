@@ -2,39 +2,69 @@
     <sys_script_include action="INSERT_OR_UPDATE">
         <access>package_private</access>
         <active>true</active>
-        <api_name>x_653938_interest.InteRESTIncident</api_name>
+        <api_name>x_653938_interest.InteRESTIncidentUtils</api_name>
         <caller_access/>
         <client_callable>false</client_callable>
         <description/>
-        <name>InteRESTIncident</name>
-        <script><![CDATA[var InteRESTIncident = Class.create();
-InteRESTIncident.prototype = {
-    initialize: function(inc) {
-		this.number = inc.number;
-		this.description = inc.description;
-		this.short_description = inc.description;
-	},
+        <name>InteRESTIncidentUtils</name>
+        <script><![CDATA[var InteRESTIncidentUtils = Class.create();
+InteRESTIncidentUtils.prototype = {
+    initialize: function(target) {
 
-		open:function(){
-			
-			
-		},
-	
-		
-    
-    type: 'InteRESTIncident'
+		try{
+		//gs.info('prototype target is '+target.name);
+		// get record from target table
+       // var endPoint = new GlideRecord('x_653938_interest_target');
+        //endPoint.get(target);
+	//	gs.info('prototype utils target_url is '+target.target_url);
+        //credentials 
+        var user = target.getValue('restuser');
+        var pwrd = target.getValue('restpwd');
+
+
+        // setup REST message to send over the newly created incident
+        this.r = new sn_ws.RESTMessageV2('');
+        this.r.setEndpoint(target.getValue('target_url') + '/api/now/table/incident?sysparm_fields=number');
+        this.r.setBasicAuth(user, pwrd);
+        this.r.setRequestHeader('Content-Type', 'application/json');
+        this.r.setLogLevel('all');
+		}
+		catch(err){
+			gs.info('prototype error is '+err);
+		}
+
+    },
+
+    testConn: function() {
+
+        try {
+            gs.info('PS: include script util testConn function end point is ' + this.r.getEndpoint());
+            this.r.setHttpMethod('GET');
+            var response = this.r.execute();
+            var httpStatus = response.getStatusCode();
+      //      gs.info('test conn util response is ' + httpStatus);
+			this.result =httpStatus;
+			return this;
+        } catch (err) {
+            gs.info('util error ' + err);
+        }
+    },
+
+
+
+    type: 'InteRESTIncidentUtils'
 };]]></script>
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>pete</sys_created_by>
         <sys_created_on>2023-03-29 21:04:50</sys_created_on>
         <sys_id>17efabba973561103f5e318c1253afeb</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_name>InteRESTIncident</sys_name>
+        <sys_mod_count>30</sys_mod_count>
+        <sys_name>InteRESTIncidentUtils</sys_name>
         <sys_package display_value="InteREST" source="x_653938_interest">836d672e97ad25103f5e318c1253af3d</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="InteREST">836d672e97ad25103f5e318c1253af3d</sys_scope>
         <sys_update_name>sys_script_include_17efabba973561103f5e318c1253afeb</sys_update_name>
         <sys_updated_by>pete</sys_updated_by>
-        <sys_updated_on>2023-03-29 21:04:50</sys_updated_on>
+        <sys_updated_on>2023-04-03 18:20:28</sys_updated_on>
     </sys_script_include>
 </record_update>
