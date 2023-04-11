@@ -42,6 +42,76 @@
             <sys_user/>
             <type/>
         </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>retried</element>
+            <position>3</position>
+            <sys_created_by>pete</sys_created_by>
+            <sys_created_on>2023-04-06 17:35:53</sys_created_on>
+            <sys_id>d7f0f4ed978ea9103f5e318c1253af22</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_653938_interest_inctimeout" sys_domain="global" view="Default view">d5f8937897ca29103f5e318c1253af82</sys_ui_section>
+            <sys_updated_by>pete</sys_updated_by>
+            <sys_updated_on>2023-04-06 17:35:53</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>incidentgr</element>
+            <position>4</position>
+            <sys_created_by>pete</sys_created_by>
+            <sys_created_on>2023-04-10 18:31:09</sys_created_on>
+            <sys_id>c404a1f2970eed103f5e318c1253af9f</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_653938_interest_inctimeout" sys_domain="global" view="Default view">d5f8937897ca29103f5e318c1253af82</sys_ui_section>
+            <sys_updated_by>pete</sys_updated_by>
+            <sys_updated_on>2023-04-10 18:31:09</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>incident_id</element>
+            <position>5</position>
+            <sys_created_by>pete</sys_created_by>
+            <sys_created_on>2023-04-10 18:31:54</sys_created_on>
+            <sys_id>ba24e9f6970eed103f5e318c1253afd4</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_653938_interest_inctimeout" sys_domain="global" view="Default view">d5f8937897ca29103f5e318c1253af82</sys_ui_section>
+            <sys_updated_by>pete</sys_updated_by>
+            <sys_updated_on>2023-04-10 18:31:54</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>endpoint_id</element>
+            <position>6</position>
+            <sys_created_by>pete</sys_created_by>
+            <sys_created_on>2023-04-10 18:51:35</sys_created_on>
+            <sys_id>5fa8693e970eed103f5e318c1253af46</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_653938_interest_inctimeout" sys_domain="global" view="Default view">d5f8937897ca29103f5e318c1253af82</sys_ui_section>
+            <sys_updated_by>pete</sys_updated_by>
+            <sys_updated_on>2023-04-10 18:51:35</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>remote_system</element>
+            <position>7</position>
+            <sys_created_by>pete</sys_created_by>
+            <sys_created_on>2023-04-10 19:04:03</sys_created_on>
+            <sys_id>8e8b2d32974eed103f5e318c1253af4f</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_653938_interest_inctimeout" sys_domain="global" view="Default view">d5f8937897ca29103f5e318c1253af82</sys_ui_section>
+            <sys_updated_by>pete</sys_updated_by>
+            <sys_updated_on>2023-04-10 19:04:03</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
         <sys_ui_section action="INSERT_OR_UPDATE">
             <caption/>
             <header>false</header>

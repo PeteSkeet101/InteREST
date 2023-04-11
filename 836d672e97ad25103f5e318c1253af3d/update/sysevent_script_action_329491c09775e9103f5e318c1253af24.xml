@@ -14,10 +14,17 @@ try {
 	var retryCount = parseInt(event.parm2) + 1;
     gs.info('SA - include retured ' + postResult);
     if (!postResult) {
-        if (retryCount > 2) {
+        if (retryCount > 1) {
             var addTimeOut = new GlideRecord('x_653938_interest_inctimeout');
             addTimeOut.eventname = event.name;
-            addTimeOut.incident = current.number.toString();
+            addTimeOut.incident = current.getValue('number');
+			addTimeOut.incident_id = current.getValue('sys_id');
+			addTimeOut.endpoint_id = event.parm1;
+			
+			var gr = new GlideRecord("x_653938_interest_target");
+			gr.get(event.parm1);
+			addTimeOut.remote_system = gr.getValue('name');
+			
 			addTimeOut.insert();
 			gs.info('SA timeout record written ');
         } else {
@@ -40,7 +47,7 @@ try {
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>329491c09775e9103f5e318c1253af24</sys_id>
-        <sys_mod_count>125</sys_mod_count>
+        <sys_mod_count>135</sys_mod_count>
         <sys_name>inteREST open</sys_name>
         <sys_overrides/>
         <sys_package display_value="InteREST" source="x_653938_interest">836d672e97ad25103f5e318c1253af3d</sys_package>
@@ -48,6 +55,6 @@ try {
         <sys_scope display_value="InteREST">836d672e97ad25103f5e318c1253af3d</sys_scope>
         <sys_update_name>sysevent_script_action_329491c09775e9103f5e318c1253af24</sys_update_name>
         <sys_updated_by>pete</sys_updated_by>
-        <sys_updated_on>2023-04-05 13:42:07</sys_updated_on>
+        <sys_updated_on>2023-04-10 19:13:26</sys_updated_on>
     </sysevent_script_action>
 </record_update>

@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element db_object_id="1180933097ca29103f5e318c1253af5f" label="IncTimeOut" max_length="40" name="x_653938_interest_inctimeout" type="collection">
+        <element label="Endpoint ID" max_length="20" name="endpoint_id" type="string"/>
         <element label="eventName" max_length="100" name="eventname" type="string"/>
-        <element label="Incident" max_length="32" name="incident" type="string"/>
+        <element label="Incident" max_length="200" name="incident" type="string"/>
+        <element label="Incident ID" max_length="20" name="incident_id" type="string"/>
+        <element label="Remote System" max_length="20" name="remote_system" type="string"/>
+        <element label="Retried" max_length="5" name="retried" type="boolean"/>
         <index name="index">
             <element name="incident"/>
         </index>
