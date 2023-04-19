@@ -4,13 +4,13 @@
             <element>restuser</element>
             <position>0</position>
             <sys_created_by>pete</sys_created_by>
-            <sys_created_on>2023-03-23 14:11:55</sys_created_on>
-            <sys_id>c70c773c97f161103f5e318c1253af8b</sys_id>
+            <sys_created_on>2023-04-19 19:58:10</sys_created_on>
+            <sys_id>2a3ecc3197daa9503f5e318c1253afb4</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="Security" display_value="Security" name="x_653938_interest_target" sys_domain="global" view="Default view">360c373c97f161103f5e318c1253affd</sys_ui_section>
             <sys_updated_by>pete</sys_updated_by>
-            <sys_updated_on>2023-03-23 14:11:55</sys_updated_on>
+            <sys_updated_on>2023-04-19 19:58:10</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -18,27 +18,27 @@
             <element>.split</element>
             <position>1</position>
             <sys_created_by>pete</sys_created_by>
-            <sys_created_on>2023-03-23 14:11:55</sys_created_on>
-            <sys_id>4b0c773c97f161103f5e318c1253af8b</sys_id>
+            <sys_created_on>2023-04-19 19:58:10</sys_created_on>
+            <sys_id>aa3ecc3197daa9503f5e318c1253afb4</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="Security" display_value="Security" name="x_653938_interest_target" sys_domain="global" view="Default view">360c373c97f161103f5e318c1253affd</sys_ui_section>
             <sys_updated_by>pete</sys_updated_by>
-            <sys_updated_on>2023-03-23 14:11:55</sys_updated_on>
+            <sys_updated_on>2023-04-19 19:58:10</sys_updated_on>
             <sys_user/>
             <type>.split</type>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>password</element>
+            <element>restpwd</element>
             <position>2</position>
             <sys_created_by>pete</sys_created_by>
-            <sys_created_on>2023-03-23 14:11:55</sys_created_on>
-            <sys_id>cb0c773c97f161103f5e318c1253af8b</sys_id>
+            <sys_created_on>2023-04-19 19:58:10</sys_created_on>
+            <sys_id>2e3ecc3197daa9503f5e318c1253afb4</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="Security" display_value="Security" name="x_653938_interest_target" sys_domain="global" view="Default view">360c373c97f161103f5e318c1253affd</sys_ui_section>
             <sys_updated_by>pete</sys_updated_by>
-            <sys_updated_on>2023-03-23 14:11:55</sys_updated_on>
+            <sys_updated_on>2023-04-19 19:58:10</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>

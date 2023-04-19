@@ -161,14 +161,13 @@ InteRESTIncidentUtils.prototype = {
         var obj = JSON.parse(json); //define JSON parsing for the response JSON file to decode
         var remoteIncidentNumber = obj.result.number;
         var remoteIncSysID = obj.result.sys_id;
-        gs.info('remote incident sys_id is ' + remoteIncSysID);
-
+      
 
 
         var extNum = new GlideRecord('x_653938_interest_external_numbers');
         extNum.external_number = remoteIncidentNumber;
 
-        gs.info('remote system is ' + this.remoteSystem.getValue('sys_id'));
+      
         extNum.remote_system = this.remoteSystem.getValue('sys_id');
         try {
             extNum.number = incident.getValue('sys_id');
@@ -219,13 +218,13 @@ InteRESTIncidentUtils.prototype = {
         <sys_created_by>pete</sys_created_by>
         <sys_created_on>2023-03-29 21:04:50</sys_created_on>
         <sys_id>17efabba973561103f5e318c1253afeb</sys_id>
-        <sys_mod_count>188</sys_mod_count>
+        <sys_mod_count>189</sys_mod_count>
         <sys_name>InteRESTIncidentUtils</sys_name>
         <sys_package display_value="InteREST" source="x_653938_interest">836d672e97ad25103f5e318c1253af3d</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="InteREST">836d672e97ad25103f5e318c1253af3d</sys_scope>
         <sys_update_name>sys_script_include_17efabba973561103f5e318c1253afeb</sys_update_name>
         <sys_updated_by>pete</sys_updated_by>
-        <sys_updated_on>2023-04-19 17:50:44</sys_updated_on>
+        <sys_updated_on>2023-04-19 19:53:58</sys_updated_on>
     </sys_script_include>
 </record_update>

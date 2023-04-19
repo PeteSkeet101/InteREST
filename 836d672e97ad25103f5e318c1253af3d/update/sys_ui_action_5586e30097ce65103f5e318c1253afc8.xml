@@ -30,8 +30,7 @@
         <name>Test Connection</name>
         <onclick>testConn()</onclick>
         <order>500</order>
-        <script><![CDATA[
-action.setRedirectURL(current);
+        <script><![CDATA[action.setRedirectURL(current);
 current.update();
 
 try {
@@ -41,12 +40,10 @@ try {
     switch (testResult) {
 
         case 'offline':
-            gs.info('returned false hibernating? ');
             gs.addErrorMessage("Error: Host not responding / offline ");
             break;
         case 'online':
-            gs.info('returned 200 successful ');
-            break;
+              break;
         case 'badHost':
             gs.addErrorMessage('Error: Host not found, please check the host name');
             break;
@@ -71,7 +68,7 @@ try {
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>5586e30097ce65103f5e318c1253afc8</sys_id>
-        <sys_mod_count>55</sys_mod_count>
+        <sys_mod_count>56</sys_mod_count>
         <sys_name>Test Connection</sys_name>
         <sys_overrides/>
         <sys_package display_value="InteREST" source="x_653938_interest">836d672e97ad25103f5e318c1253af3d</sys_package>
@@ -79,7 +76,7 @@ try {
         <sys_scope display_value="InteREST">836d672e97ad25103f5e318c1253af3d</sys_scope>
         <sys_update_name>sys_ui_action_5586e30097ce65103f5e318c1253afc8</sys_update_name>
         <sys_updated_by>pete</sys_updated_by>
-        <sys_updated_on>2023-04-12 15:21:51</sys_updated_on>
+        <sys_updated_on>2023-04-19 19:55:14</sys_updated_on>
         <table>x_653938_interest_target</table>
         <ui11_compatible>true</ui11_compatible>
         <ui16_compatible>true</ui16_compatible>
