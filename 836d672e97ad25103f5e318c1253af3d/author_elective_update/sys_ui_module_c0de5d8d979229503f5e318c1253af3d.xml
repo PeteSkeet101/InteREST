@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_ui_module">
+    <sys_ui_module action="DELETE">
+        <active>true</active>
+        <application display_value="InteREST">2ae0537097ca29103f5e318c1253af2d</application>
+        <filter/>
+        <name>Field Names</name>
+        <order/>
+        <path/>
+        <path_relative_to_root>false</path_relative_to_root>
+        <roles>x_653938_interest.field_names_user</roles>
+        <sys_class_name>sys_ui_module</sys_class_name>
+        <sys_created_by>pete</sys_created_by>
+        <sys_created_on>2023-04-17 17:54:49</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>c0de5d8d979229503f5e318c1253af3d</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Field Names</sys_name>
+        <sys_package display_value="InteREST" source="x_653938_interest">836d672e97ad25103f5e318c1253af3d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="InteREST">836d672e97ad25103f5e318c1253af3d</sys_scope>
+        <sys_update_name>sys_ui_module_c0de5d8d979229503f5e318c1253af3d</sys_update_name>
+        <sys_updated_by>pete</sys_updated_by>
+        <sys_updated_on>2023-04-17 17:54:49</sys_updated_on>
+        <table>x_653938_interest_field_names</table>
+        <uncancelable>false</uncancelable>
+        <view_name/>
+    </sys_ui_module>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="InteREST">836d672e97ad25103f5e318c1253af3d</application>
+        <file_path/>
+        <instance_id>01cab999db41495010543feb6896194d</instance_id>
+        <instance_name>dev120844</instance_name>
+        <name>sys_ui_module_c0de5d8d979229503f5e318c1253af3d</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_ui_module"><sys_ui_module action="INSERT_OR_UPDATE"><active>true</active><application display_value="InteREST">2ae0537097ca29103f5e318c1253af2d</application><filter/><name>Field Names</name><order/><path/><path_relative_to_root>false</path_relative_to_root><roles>x_653938_interest.field_names_user</roles><sys_class_name>sys_ui_module</sys_class_name><sys_created_by>pete</sys_created_by><sys_created_on>2023-04-17 17:54:49</sys_created_on><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>c0de5d8d979229503f5e318c1253af3d</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Field Names</sys_name><sys_package display_value="InteREST" source="x_653938_interest">836d672e97ad25103f5e318c1253af3d</sys_package><sys_policy/><sys_scope display_value="InteREST">836d672e97ad25103f5e318c1253af3d</sys_scope><sys_update_name>sys_ui_module_c0de5d8d979229503f5e318c1253af3d</sys_update_name><sys_updated_by>pete</sys_updated_by><sys_updated_on>2023-04-17 17:54:49</sys_updated_on><table>x_653938_interest_field_names</table><uncancelable>false</uncancelable><view_name/></sys_ui_module></record_update>]]></payload>
+        <payload_hash>-547175258</payload_hash>
+        <record_name>Field Names</record_name>
+        <reverted_from/>
+        <source>da00da9d97f161103f5e318c1253afc4</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>pete</sys_created_by>
+        <sys_created_on>2023-04-17 17:54:49</sys_created_on>
+        <sys_id>00de5d8d979229503f5e318c1253af40</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>187905ae7d50000001</sys_recorded_at>
+        <sys_updated_by>pete</sys_updated_by>
+        <sys_updated_on>2023-04-17 17:54:49</sys_updated_on>
+        <type>Module</type>
+        <update_guid>44de5d8df2922950956f878112e3ee3f</update_guid>
+        <update_guid_history>44de5d8df2922950956f878112e3ee3f:-547175258</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>pete</sys_created_by>
+        <sys_created_on>2023-04-17 20:49:05</sys_created_on>
+        <sys_db_object display_value="" name="sys_ui_module">sys_ui_module</sys_db_object>
+        <sys_id>cc992048a640403c948152a3e1776490</sys_id>
+        <sys_metadata>c0de5d8d979229503f5e318c1253af3d</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Field Names</sys_name>
+        <sys_package display_value="InteREST" source="x_653938_interest">836d672e97ad25103f5e318c1253af3d</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="InteREST">836d672e97ad25103f5e318c1253af3d</sys_scope>
+        <sys_scope_delete display_value="">09fe13ff0ab54d3c9503c8ae7b3cb2d9</sys_scope_delete>
+        <sys_update_name>sys_ui_module_c0de5d8d979229503f5e318c1253af3d</sys_update_name>
+        <sys_update_version display_value="sys_ui_module_c0de5d8d979229503f5e318c1253af3d">00de5d8d979229503f5e318c1253af40</sys_update_version>
+        <sys_updated_by>pete</sys_updated_by>
+        <sys_updated_on>2023-04-17 20:49:05</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

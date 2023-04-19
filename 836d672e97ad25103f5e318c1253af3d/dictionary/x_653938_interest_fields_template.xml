@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="b3888a05975629503f5e318c1253af0a" label="Fields template" max_length="40" name="x_653938_interest_fields_template" type="collection">
+        <element label="Field name" max_length="100" name="field_name" type="string"/>
+        <element label="Name" max_length="100" name="name" type="string"/>
+    </element>
+</database>
