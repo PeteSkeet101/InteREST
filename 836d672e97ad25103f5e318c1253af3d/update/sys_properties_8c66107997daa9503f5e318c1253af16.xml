@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sys_properties">
     <sys_properties action="INSERT_OR_UPDATE">
         <choices/>
-        <description>Enter the period of time in seconds in between retries</description>
+        <description>How many times to retry sending before recording as a time out</description>
         <ignore_cache>true</ignore_cache>
         <is_private>false</is_private>
-        <name>x_653938_interest.retry period</name>
+        <name>x_653938_interest.Retry attempts</name>
         <read_roles/>
-        <suffix>retry period</suffix>
+        <suffix>Retry attempts</suffix>
         <sys_class_name>sys_properties</sys_class_name>
         <sys_created_by>pete</sys_created_by>
-        <sys_created_on>2023-04-19 20:16:13</sys_created_on>
-        <sys_id>e302d87197daa9503f5e318c1253aff1</sys_id>
-        <sys_mod_count>2</sys_mod_count>
-        <sys_name>x_653938_interest.retry period</sys_name>
+        <sys_created_on>2023-04-19 20:35:15</sys_created_on>
+        <sys_id>8c66107997daa9503f5e318c1253af16</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_653938_interest.Retry attempts</sys_name>
         <sys_package display_value="InteREST" source="x_653938_interest">836d672e97ad25103f5e318c1253af3d</sys_package>
         <sys_policy/>
         <sys_scope display_value="InteREST">836d672e97ad25103f5e318c1253af3d</sys_scope>
-        <sys_update_name>sys_properties_e302d87197daa9503f5e318c1253aff1</sys_update_name>
+        <sys_update_name>sys_properties_8c66107997daa9503f5e318c1253af16</sys_update_name>
         <sys_updated_by>pete</sys_updated_by>
-        <sys_updated_on>2023-04-19 20:37:38</sys_updated_on>
+        <sys_updated_on>2023-04-19 20:35:15</sys_updated_on>
         <type>integer</type>
-        <value>150</value>
+        <value>5</value>
         <write_roles>x_653938_interest.admin</write_roles>
     </sys_properties>
-    <sys_translated_text action="delete_multiple" query="documentkey=e302d87197daa9503f5e318c1253aff1"/>
+    <sys_translated_text action="delete_multiple" query="documentkey=8c66107997daa9503f5e318c1253af16"/>
 </record_update>
