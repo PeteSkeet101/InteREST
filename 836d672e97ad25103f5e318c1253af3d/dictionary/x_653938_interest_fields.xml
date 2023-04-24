@@ -9,6 +9,7 @@
             </choice>
         </element>
         <element label="Target" max_length="32" name="target" reference="x_653938_interest_target" type="reference"/>
+        <element label="test" max_length="1000" name="test" type="string"/>
         <index name="index">
             <element name="target"/>
         </index>
