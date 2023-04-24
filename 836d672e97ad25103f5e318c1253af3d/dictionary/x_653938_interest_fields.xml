@@ -2,7 +2,7 @@
     <element db_object_id="953c3c9297f925103f5e318c1253af37" label="Fields" max_length="40" name="x_653938_interest_fields" type="collection">
         <element label="Active" max_length="10" name="active" type="boolean"/>
         <element label="Field name" max_length="30" name="field_name" type="string"/>
-        <element choice="1" label="Module" max_length="20" name="module" type="choice">
+        <element choice="1" label="Module" max_length="20" name="module" type="string">
             <choice>
                 <element inactive_on_update="false" label="Change" value="Change"/>
                 <element inactive_on_update="false" label="incident" value="incident"/>

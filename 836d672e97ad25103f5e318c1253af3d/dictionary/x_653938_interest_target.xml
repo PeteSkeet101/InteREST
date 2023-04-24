@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element db_object_id="52628876972165103f5e318c1253af58" label="Target" max_length="40" name="x_653938_interest_target" type="collection">
-        <element display="true" label="Name" max_length="100" name="name" type="string"/>
-        <element label="Password" max_length="255" name="restpwd" type="password2"/>
+        <element label="Name" max_length="100" name="name" type="string"/>
+        <element display="true" label="Password" max_length="255" name="restpwd" type="password2"/>
         <element label="restUser" max_length="20" name="restuser" type="string"/>
         <element label="Enter the target URL" max_length="100" name="target_url" type="string"/>
         <element label="Active" max_length="40" name="u_active" type="boolean"/>
