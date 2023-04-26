@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_relationship">
+    <sys_relationship action="INSERT_OR_UPDATE">
+        <advanced>false</advanced>
+        <apply_to/>
+        <basic_apply_to>x_653938_interest_target</basic_apply_to>
+        <basic_query_from>x_653938_interest_groups</basic_query_from>
+        <insert_callback/>
+        <name>Groups</name>
+        <query_from/>
+        <query_with><![CDATA[(function refineQuery(current, parent) {
+
+current.addQuery('remote_system',parent.getValue('sys_id'));
+
+   
+    
+    
+
+})(current, parent);]]></query_with>
+        <reference_field/>
+        <related_list/>
+        <simple_reference>false</simple_reference>
+        <sys_class_name>sys_relationship</sys_class_name>
+        <sys_created_by>pete</sys_created_by>
+        <sys_created_on>2023-04-25 19:17:34</sys_created_on>
+        <sys_id>ee9ab6ef975e61903f5e318c1253afe1</sys_id>
+        <sys_mod_count>7</sys_mod_count>
+        <sys_name>Groups</sys_name>
+        <sys_package display_value="InteREST" source="x_653938_interest">836d672e97ad25103f5e318c1253af3d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="InteREST">836d672e97ad25103f5e318c1253af3d</sys_scope>
+        <sys_update_name>sys_relationship_ee9ab6ef975e61903f5e318c1253afe1</sys_update_name>
+        <sys_updated_by>pete</sys_updated_by>
+        <sys_updated_on>2023-04-26 17:39:57</sys_updated_on>
+    </sys_relationship>
+    <sys_translated_text action="delete_multiple" query="documentkey=ee9ab6ef975e61903f5e318c1253afe1"/>
+</record_update>
