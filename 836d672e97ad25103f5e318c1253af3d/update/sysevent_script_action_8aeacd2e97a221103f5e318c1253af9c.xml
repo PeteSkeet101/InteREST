@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sysevent_script_action">
+    <sysevent_script_action action="INSERT_OR_UPDATE">
+        <active>false</active>
+        <condition_script/>
+        <description/>
+        <event_name>x_653938_interest.incident_update</event_name>
+        <name/>
+        <order>100</order>
+        <script><![CDATA[try {
+    var updateInc = new InteRESTIncidentUtils(event.parm1);
+    var updateResult = updatetInc.update(current);
+	
+	var retryCount = '0' ;
+	//var retryCount = parseInt(event.parm2) + 1;
+    gs.info('SA - include retured ' + updateResult);
+    if (!updateResult) {
+		var numRetries = gs.getProperty('x_653938_interest.Retry attempts');
+        if (retryCount > numRetries) {
+            var addTimeOut = new GlideRecord('x_653938_interest_inctimeout');
+            addTimeOut.eventname = event.name;
+            addTimeOut.incident = current.getValue('number');
+			addTimeOut.incident_id = current.getValue('sys_id');
+			addTimeOut.endpoint_id = event.parm1;
+			
+			var gr = new GlideRecord("x_653938_interest_target");
+			gr.get(event.parm1);
+			addTimeOut.remote_system = gr.getValue('name');
+			
+			addTimeOut.insert();
+			gs.info('SA timeout record written ');
+        } else {
+			var retryPeriod = gs.getProperty('x_653938_interest.retry period');
+            var retryTime = new GlideDateTime();
+            retryTime.addSeconds(retryPeriod);
+            gs.eventQueueScheduled('x_653938_interest.update', current, event.parm1, event.parm2, retryTime);
+			}
+	}
+
+}
+
+   catch (ex) {
+        gs.info('script action interest open incident app gave error: ' + ex.message);
+    }]]></script>
+        <synchronous>false</synchronous>
+        <sys_class_name>sysevent_script_action</sys_class_name>
+        <sys_created_by>pete</sys_created_by>
+        <sys_created_on>2023-05-04 18:38:26</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>8aeacd2e97a221103f5e318c1253af9c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_overrides/>
+        <sys_package display_value="InteREST" source="x_653938_interest">836d672e97ad25103f5e318c1253af3d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="InteREST">836d672e97ad25103f5e318c1253af3d</sys_scope>
+        <sys_update_name>sysevent_script_action_8aeacd2e97a221103f5e318c1253af9c</sys_update_name>
+        <sys_updated_by>pete</sys_updated_by>
+        <sys_updated_on>2023-05-04 18:38:26</sys_updated_on>
+    </sysevent_script_action>
+</record_update>
