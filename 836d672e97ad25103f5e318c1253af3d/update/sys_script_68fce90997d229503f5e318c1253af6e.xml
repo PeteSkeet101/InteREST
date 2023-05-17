@@ -18,7 +18,7 @@
         <filter_condition/>
         <is_rest>false</is_rest>
         <message/>
-        <name>Incident update</name>
+        <name>Incident_update</name>
         <order>100</order>
         <priority>100</priority>
         <rest_method/>
@@ -53,8 +53,11 @@ gs.info('the sys_updated by is '+current.sys_updated_by);
 		}
 	
         //create event for each remote system end point
-		jsnParam = {'short_description':'this is the new short description','description':'this is the new long description','attempt':'0'};
-		gs.eventQueue('x_653938_interest.incident_update', current, ep.getValue('sys_id'), jsnParam);
+		jsnParam = '[{"short_description":"this is the new short description","description":"this is the new long description","attempt":"0"}]';
+	jsnstr = JSON.stringify(jsnParam);
+	
+	gs.info('BR update : pre event JSON is ' +jsnstr );
+		gs.eventQueue('x_653938_interest.incident_update', current, ep.getValue('sys_id'), jsnstr);
 }
 	
 	
@@ -71,15 +74,15 @@ gs.info('the sys_updated by is '+current.sys_updated_by);
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>68fce90997d229503f5e318c1253af6e</sys_id>
-        <sys_mod_count>19</sys_mod_count>
-        <sys_name>Incident update</sys_name>
+        <sys_mod_count>26</sys_mod_count>
+        <sys_name>Incident_update</sys_name>
         <sys_overrides/>
         <sys_package display_value="InteREST" source="x_653938_interest">836d672e97ad25103f5e318c1253af3d</sys_package>
         <sys_policy/>
         <sys_scope display_value="InteREST">836d672e97ad25103f5e318c1253af3d</sys_scope>
         <sys_update_name>sys_script_68fce90997d229503f5e318c1253af6e</sys_update_name>
         <sys_updated_by>pete</sys_updated_by>
-        <sys_updated_on>2023-05-04 18:32:23</sys_updated_on>
+        <sys_updated_on>2023-05-11 20:44:17</sys_updated_on>
         <template/>
         <when>after</when>
     </sys_script>
