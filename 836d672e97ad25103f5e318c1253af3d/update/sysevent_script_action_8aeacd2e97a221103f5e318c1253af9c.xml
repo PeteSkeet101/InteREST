@@ -4,7 +4,7 @@
         <condition_script/>
         <description/>
         <event_name>x_653938_interest.incident_update</event_name>
-        <name/>
+        <name>Incident update</name>
         <order>100</order>
         <script><![CDATA[  //  var updateInc = new InteRESTIncidentUtils(event.parm1);
     //var updateResult = updatetInc.update(current);
@@ -57,14 +57,14 @@ try{	var updates = JSON.parse(event.parm2);
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>8aeacd2e97a221103f5e318c1253af9c</sys_id>
-        <sys_mod_count>16</sys_mod_count>
-        <sys_name/>
+        <sys_mod_count>17</sys_mod_count>
+        <sys_name>Incident update</sys_name>
         <sys_overrides/>
         <sys_package display_value="InteREST" source="x_653938_interest">836d672e97ad25103f5e318c1253af3d</sys_package>
         <sys_policy/>
         <sys_scope display_value="InteREST">836d672e97ad25103f5e318c1253af3d</sys_scope>
         <sys_update_name>sysevent_script_action_8aeacd2e97a221103f5e318c1253af9c</sys_update_name>
         <sys_updated_by>pete</sys_updated_by>
-        <sys_updated_on>2023-05-11 21:14:06</sys_updated_on>
+        <sys_updated_on>2023-05-24 18:15:51</sys_updated_on>
     </sysevent_script_action>
 </record_update>
