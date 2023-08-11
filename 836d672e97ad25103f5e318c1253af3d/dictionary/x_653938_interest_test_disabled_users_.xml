@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="1193fbd7975471103f5e318c1253afcf" extends="sys_import_set_row" label="Test Disabled users " max_length="40" name="x_653938_interest_test_disabled_users_" type="collection">
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Active" label="Active" max_length="40" name="u_active" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Created" label="Created" max_length="40" name="u_created" type="glide_date_time"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=dis_email" label="dis_email" max_length="40" name="u_dis_email" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=dis_name" label="dis_name" max_length="40" name="u_dis_name" type="string"/>
+        <element attributes="import_attribute_name=Either" label="Either" max_length="40" name="u_either" type="integer"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Email" label="Email" max_length="40" name="u_email" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Last login" label="Last login" max_length="40" name="u_last_login" type="glide_date"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Name" label="Name" max_length="40" name="u_name" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=Updated" label="Updated" max_length="40" name="u_updated" type="glide_date_time"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=User ID" label="User ID" max_length="40" name="u_user_id" type="string"/>
+        <element attributes="edge_encryption_enabled=true,import_attribute_name=VIP" label="VIP" max_length="40" name="u_vip" type="string"/>
+    </element>
+</database>
