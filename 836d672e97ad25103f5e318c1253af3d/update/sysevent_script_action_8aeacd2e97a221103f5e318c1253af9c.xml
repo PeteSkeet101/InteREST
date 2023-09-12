@@ -7,19 +7,23 @@
         <name>Incident update</name>
         <order>100</order>
         <script><![CDATA[  
-gs.info("Script Action: starting incident update action script");
+gs.info("SA: starting incident update action script");
 
-   var updateInc = new InteRESTIncidentUtils(event.parm1);
+   var updateInc = new InteRESTIncidentUtils();
+
+var tstparm2 = event.parm2;
+//gs.info('SA: tstparm2 is'+tstparm2);
+var updateResult = updateInc.update(tstparm2);
+//var updateResult = updateInc.update("{\"short_description\":\"e\"}");
 
 try{
-var updateResult = updateInc.update(current);
-
-
-	var updates = JSON.parse(event.parm2);
- gs.info('parm2 is '+JSON.stringify(updates));
+	
+	var strUpdate = global.JSON.stringify(updateResult);
+	var updates = global.JSON.parse(updateResult);
+// gs.info('SA: parm2 is '+JSON.stringify(updates));
 	
 	var shortdes = updates.short_description;
-	gs.info('short description is '+ shortdes);
+//	gs.info('SA line 14: short description is '+ shortdes);
 	
 	
 	
@@ -40,7 +44,7 @@ var updateResult = updateInc.update(current);
 			addTimeOut.remote_system = gr.getValue('name');
 			
 			addTimeOut.insert();
-			gs.info('SA timeout record written ');
+	//		gs.info('SA timeout record written ');
         } else {
 			var retryPeriod = gs.getProperty('x_653938_interest.retry period');
             var retryTime = new GlideDateTime();
@@ -52,7 +56,7 @@ var updateResult = updateInc.update(current);
 }
 
    catch (ex) {
-        gs.info('script action interest update incident app gave error: ' + ex.message);
+        gs.info('SA update incident app gave error: ' + ex.message);
     }]]></script>
         <synchronous>false</synchronous>
         <sys_class_name>sysevent_script_action</sys_class_name>
@@ -61,7 +65,7 @@ var updateResult = updateInc.update(current);
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>8aeacd2e97a221103f5e318c1253af9c</sys_id>
-        <sys_mod_count>26</sys_mod_count>
+        <sys_mod_count>43</sys_mod_count>
         <sys_name>Incident update</sys_name>
         <sys_overrides/>
         <sys_package display_value="InteREST" source="x_653938_interest">836d672e97ad25103f5e318c1253af3d</sys_package>
@@ -69,6 +73,6 @@ var updateResult = updateInc.update(current);
         <sys_scope display_value="InteREST">836d672e97ad25103f5e318c1253af3d</sys_scope>
         <sys_update_name>sysevent_script_action_8aeacd2e97a221103f5e318c1253af9c</sys_update_name>
         <sys_updated_by>pete</sys_updated_by>
-        <sys_updated_on>2023-08-15 21:17:40</sys_updated_on>
+        <sys_updated_on>2023-09-06 21:06:12</sys_updated_on>
     </sysevent_script_action>
 </record_update>

@@ -29,7 +29,7 @@
         <role_conditions/>
         <script><![CDATA[(function executeRule(current, previous /*null when async*/ ) {
         var jsnParam = '';
-        gs.info('the sys_updated by is ' + current.sys_updated_by);
+  //      gs.info('the sys_updated by is ' + current.sys_updated_by);
         // get active end integration end points 
 
 
@@ -53,7 +53,7 @@ try{
 
             while (fields.next()) {
                 // 				recNum = recNum +1; 
-                gs.info('looping in the fields for update' + fields.getValue('field_name'));
+           //     gs.info('looping in the fields for update' + fields.getValue('field_name'));
 
                 if (current[fields.getValue('field_name')] != previous[fields.getValue('field_name')]) {
 					if (firstJSON>0){
@@ -74,7 +74,7 @@ firstJSON = firstJSON + 1;
 
                     }
                
-                gs.info('BR update jsnParam is now ' + jsnParam);
+   //            gs.info('BR update jsnParam is now ' + jsnParam);
             }
         }
  } catch (err) {
@@ -83,13 +83,13 @@ firstJSON = firstJSON + 1;
 	
 
         //create event for each remote system end point
-
+ gs.info('BR update:event JSON string is =' + jsnParam);
 
       //  jsnParam = '[{"short_description":"' + current.short_description + '","description":"' + current.description + '","attempt":"0"}]';
-        jsnstr = JSON.stringify(jsnParam);
+       // jsnstr = JSON.stringify(jsnParam);
 
-        gs.info('BR update : pre event JSON is ' + jsnstr);
-        gs.eventQueue('x_653938_interest.incident_update', current, ep.getValue('sys_id'), jsnstr);
+      //gs.info('BR update:event JSON string is =' + jsnstr);
+        gs.eventQueue('x_653938_interest.incident_update', current, ep.getValue('sys_id'), jsnParam);
     }
 
 
@@ -104,7 +104,7 @@ firstJSON = firstJSON + 1;
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>68fce90997d229503f5e318c1253af6e</sys_id>
-        <sys_mod_count>61</sys_mod_count>
+        <sys_mod_count>65</sys_mod_count>
         <sys_name>Incident_update</sys_name>
         <sys_overrides/>
         <sys_package display_value="InteREST" source="x_653938_interest">836d672e97ad25103f5e318c1253af3d</sys_package>
@@ -112,7 +112,7 @@ firstJSON = firstJSON + 1;
         <sys_scope display_value="InteREST">836d672e97ad25103f5e318c1253af3d</sys_scope>
         <sys_update_name>sys_script_68fce90997d229503f5e318c1253af6e</sys_update_name>
         <sys_updated_by>pete</sys_updated_by>
-        <sys_updated_on>2023-08-03 15:48:39</sys_updated_on>
+        <sys_updated_on>2023-09-06 21:02:55</sys_updated_on>
         <template/>
         <when>after</when>
     </sys_script>
