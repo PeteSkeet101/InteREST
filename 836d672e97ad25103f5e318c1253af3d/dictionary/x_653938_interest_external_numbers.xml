@@ -2,7 +2,7 @@
     <element db_object_id="ecd56d5a977d25103f5e318c1253afaa" label="External numbers" max_length="40" name="x_653938_interest_external_numbers" type="collection">
         <element label="External number" max_length="20" name="external_number" type="string"/>
         <element label="Number" max_length="32" name="number" reference="task" type="reference"/>
-        <element display="true" label="Remote System" max_length="32" name="remote_system" reference="x_653938_interest_target" type="reference"/>
+        <element label="Remote System" max_length="32" name="remote_system" reference="x_653938_interest_target" type="reference"/>
         <index name="index">
             <element name="number"/>
         </index>
