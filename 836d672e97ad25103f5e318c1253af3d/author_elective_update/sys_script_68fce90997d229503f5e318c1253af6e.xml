@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script">
+    <sys_script action="DELETE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>false</action_insert>
+        <action_query>false</action_query>
+        <action_update>true</action_update>
+        <active>false</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>incident</collection>
+        <condition>(current.sys_updated_by!='System')</condition>
+        <description/>
+        <execute_function>false</execute_function>
+        <filter_condition/>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>Incident_update_old</name>
+        <order>100</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/ ) {
+        var jsnParam = '{"extID":"789682234759b110c57bfee3846d4341",';
+  //      gs.info('the sys_updated by is ' + current.sys_updated_by);
+        // get active end integration end points 
+
+// get end points for the group 
+        var groups = new GlideRecord('x_653938_interest_groups');
+        groups.addQuery('group', current.assignment_group);
+        groups.query();
+// get existing external numbers
+		var extNums = new GlideRecord('x_653938_interest_external_numbers');
+		extNums.addQuery('number',current.sys_id);
+		extNums.query();
+	    extNums.next();
+	gs.info('BR update found number is '+extNums.number);
+
+
+	
+
+	
+	var firstJSON =0 
+
+        while (groups.next()) {
+			
+			
+			
+            var ep = new GlideRecord('x_653938_interest_target');
+            ep.get(groups.remote_system);
+			
+			var remoteNum = new GLideRecord('x_653938_interest_external_numbers');
+			remoteNum.addQuery('remote_system')
+			
+			
+            // get fields for remote system 
+            var fields = new GlideRecord('x_653938_interest_fields');
+            fields.addQuery('module', current.sys_class_name);
+            fields.addQuery('target.name', ep.getValue('name'));
+            fields.query();
+            // 			var numRecs = fields.getRowCount();
+            // 			var recNum = 0 ;
+
+            while (fields.next()) {
+                // 				recNum = recNum +1; 
+           //     gs.info('looping in the fields for update' + fields.getValue('field_name'));
+
+                if (current[fields.getValue('field_name')] != previous[fields.getValue('field_name')]) {
+					if (firstJSON>0){
+						jsnParam = jsnParam + ',';
+					}
+					
+firstJSON = firstJSON + 1;
+                    jsnParam = jsnParam + '"' + fields.getValue('field_name') + '":"' + current[fields.getValue('field_name')] + '"';
+                    
+                }
+
+
+               
+                    if (!fields.hasNext()) {
+                        
+                     
+                        jsnParam = jsnParam + '}';
+
+                    }
+               
+   //            gs.info('BR update jsnParam is now ' + jsnParam);
+            }
+        }
+	
+
+        //create event for each remote system end point
+ gs.info('BR update:event JSON string is =' + jsnParam);
+
+      //  jsnParam = '[{"short_description":"' + current.short_description + '","description":"' + current.description + '","attempt":"0"}]';
+       // jsnstr = JSON.stringify(jsnParam);
+
+      //gs.info('BR update:event JSON string is =' + jsnstr);
+        gs.eventQueue('x_653938_interest.incident_update', current, ep.getValue('sys_id'), jsnParam);
+    }
+
+
+    // 	if (!(current.short_description==previous.short_description)){
+    // 	gs.info('short description changed');
+
+    // 
+)(current, previous);]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>pete</sys_created_by>
+        <sys_created_on>2023-04-17 18:58:26</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>68fce90997d229503f5e318c1253af6e</sys_id>
+        <sys_mod_count>79</sys_mod_count>
+        <sys_name>Incident_update_old</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="InteREST" source="x_653938_interest">836d672e97ad25103f5e318c1253af3d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="InteREST">836d672e97ad25103f5e318c1253af3d</sys_scope>
+        <sys_update_name>sys_script_68fce90997d229503f5e318c1253af6e</sys_update_name>
+        <sys_updated_by>pete</sys_updated_by>
+        <sys_updated_on>2023-09-26 13:34:14</sys_updated_on>
+        <template/>
+        <when>after</when>
+    </sys_script>
+    <sys_translated_text action="DELETE" query="documentkey=68fce90997d229503f5e318c1253af6e"/>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="InteREST">836d672e97ad25103f5e318c1253af3d</application>
+        <file_path/>
+        <instance_id>01cab999db41495010543feb6896194d</instance_id>
+        <instance_name>dev120844</instance_name>
+        <name>sys_script_68fce90997d229503f5e318c1253af6e</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update sys_domain="global" table="sys_script"&gt;&lt;sys_script action="INSERT_OR_UPDATE"&gt;&lt;abort_action&gt;false&lt;/abort_action&gt;&lt;access&gt;package_private&lt;/access&gt;&lt;action_delete&gt;false&lt;/action_delete&gt;&lt;action_insert&gt;false&lt;/action_insert&gt;&lt;action_query&gt;false&lt;/action_query&gt;&lt;action_update&gt;true&lt;/action_update&gt;&lt;active&gt;false&lt;/active&gt;&lt;add_message&gt;false&lt;/add_message&gt;&lt;advanced&gt;true&lt;/advanced&gt;&lt;change_fields&gt;false&lt;/change_fields&gt;&lt;client_callable&gt;false&lt;/client_callable&gt;&lt;collection&gt;incident&lt;/collection&gt;&lt;condition&gt;(current.sys_updated_by!='System')&lt;/condition&gt;&lt;description/&gt;&lt;execute_function&gt;false&lt;/execute_function&gt;&lt;filter_condition/&gt;&lt;is_rest&gt;false&lt;/is_rest&gt;&lt;message/&gt;&lt;name&gt;Incident_update_old&lt;/name&gt;&lt;order&gt;100&lt;/order&gt;&lt;priority&gt;100&lt;/priority&gt;&lt;rest_method/&gt;&lt;rest_method_text/&gt;&lt;rest_service/&gt;&lt;rest_service_text/&gt;&lt;rest_variables/&gt;&lt;role_conditions/&gt;&lt;script&gt;&lt;![CDATA[(function executeRule(current, previous /*null when async*/ ) {
+        var jsnParam = '{"extID":"789682234759b110c57bfee3846d4341",';
+  //      gs.info('the sys_updated by is ' + current.sys_updated_by);
+        // get active end integration end points 
+
+// get end points for the group 
+        var groups = new GlideRecord('x_653938_interest_groups');
+        groups.addQuery('group', current.assignment_group);
+        groups.query();
+// get existing external numbers
+		var extNums = new GlideRecord('x_653938_interest_external_numbers');
+		extNums.addQuery('number',current.sys_id);
+		extNums.query();
+	    extNums.next();
+	gs.info('BR update found number is '+extNums.number);
+
+
+	
+
+	
+	var firstJSON =0 
+
+        while (groups.next()) {
+			
+			
+			
+            var ep = new GlideRecord('x_653938_interest_target');
+            ep.get(groups.remote_system);
+			
+			var remoteNum = new GLideRecord('x_653938_interest_external_numbers');
+			remoteNum.addQuery('remote_system')
+			
+			
+            // get fields for remote system 
+            var fields = new GlideRecord('x_653938_interest_fields');
+            fields.addQuery('module', current.sys_class_name);
+            fields.addQuery('target.name', ep.getValue('name'));
+            fields.query();
+            // 			var numRecs = fields.getRowCount();
+            // 			var recNum = 0 ;
+
+            while (fields.next()) {
+                // 				recNum = recNum +1; 
+           //     gs.info('looping in the fields for update' + fields.getValue('field_name'));
+
+                if (current[fields.getValue('field_name')] != previous[fields.getValue('field_name')]) {
+					if (firstJSON&gt;0){
+						jsnParam = jsnParam + ',';
+					}
+					
+firstJSON = firstJSON + 1;
+                    jsnParam = jsnParam + '"' + fields.getValue('field_name') + '":"' + current[fields.getValue('field_name')] + '"';
+                    
+                }
+
+
+               
+                    if (!fields.hasNext()) {
+                        
+                     
+                        jsnParam = jsnParam + '}';
+
+                    }
+               
+   //            gs.info('BR update jsnParam is now ' + jsnParam);
+            }
+        }
+	
+
+        //create event for each remote system end point
+ gs.info('BR update:event JSON string is =' + jsnParam);
+
+      //  jsnParam = '[{"short_description":"' + current.short_description + '","description":"' + current.description + '","attempt":"0"}]';
+       // jsnstr = JSON.stringify(jsnParam);
+
+      //gs.info('BR update:event JSON string is =' + jsnstr);
+        gs.eventQueue('x_653938_interest.incident_update', current, ep.getValue('sys_id'), jsnParam);
+    }
+
+
+    // 	if (!(current.short_description==previous.short_description)){
+    // 	gs.info('short description changed');
+
+    // 
+)(current, previous);]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;sys_script&lt;/sys_class_name&gt;&lt;sys_created_by&gt;pete&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2023-04-17 18:58:26&lt;/sys_created_on&gt;&lt;sys_domain&gt;global&lt;/sys_domain&gt;&lt;sys_domain_path&gt;/&lt;/sys_domain_path&gt;&lt;sys_id&gt;68fce90997d229503f5e318c1253af6e&lt;/sys_id&gt;&lt;sys_mod_count&gt;79&lt;/sys_mod_count&gt;&lt;sys_name&gt;Incident_update_old&lt;/sys_name&gt;&lt;sys_overrides/&gt;&lt;sys_package display_value="InteREST" source="x_653938_interest"&gt;836d672e97ad25103f5e318c1253af3d&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="InteREST"&gt;836d672e97ad25103f5e318c1253af3d&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_script_68fce90997d229503f5e318c1253af6e&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;pete&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2023-09-26 13:34:14&lt;/sys_updated_on&gt;&lt;template/&gt;&lt;when&gt;after&lt;/when&gt;&lt;/sys_script&gt;&lt;sys_translated_text action="delete_multiple" query="documentkey=68fce90997d229503f5e318c1253af6e"/&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>1822452492</payload_hash>
+        <record_name>Incident_update_old</record_name>
+        <reverted_from/>
+        <source>da00da9d97f161103f5e318c1253afc4</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>pete</sys_created_by>
+        <sys_created_on>2023-09-26 13:34:14</sys_created_on>
+        <sys_id>e2b4b68d97a171103f5e318c1253afc9</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>18ad1b28de90000001</sys_recorded_at>
+        <sys_updated_by>pete</sys_updated_by>
+        <sys_updated_on>2023-09-26 13:34:14</sys_updated_on>
+        <type>Business Rule</type>
+        <update_guid>2ab4b68dd2a171103b2385ba1cafecc8</update_guid>
+        <update_guid_history>2ab4b68dd2a171103b2385ba1cafecc8:1822452492,82a4368d97a171108c4c7f84739a5d05:-580229236,6c04324d2fa171103b7aedc9857a1fa7:-62353517,855372c99ea171107e1d3cf06a775f64:1601167889,6f91b289cea17110ec87099357661434:1670990469,99613a899ca171101f53e633609f7476:-1943284418,1ce0b2894ea171102eea986d3d877a2c:2053214522,2560b24968a17110836cccdd95b07942:-993560571,caef2a095fa17110bcaca1d79a6d93a3:-1536117113,3837cbb30851311016936cb5eddd7515:100256295,b242feaabfd131101c074684df08b2cf:104919252,1bc13aaab4d13110b5f079621f48522c:1296655980,d119622192d1311062db14a8d6e7f9be:-1143404547,efa809dd491131103531901538a0df56:-138046042,b39bd976504131101f434ecc2ae93015:189317032,f13b1d76df413110d069b54380b88949:1895209636,24f7413668013110eb3a31659aac3646:-1426507416,299f4f05fd453110cc3eb8f18466b224:466187301,45ad0d3fe4903110c06db06e5fc7c6d1:1301880101,405d6c7f10103110aa951c6635a4bbf1:511910695,890da03fc91031109ff687b2c5bf7881:1331603207,ebcb243f50103110827ac4500c09b7ac:1162836199,a49bacfb02103110e47b835a480830a8:1374234756,896b2cbb0c103110932d2ad2cda53100:-762438294,009a247bd01031105165b73db41d2d0f:-447400797,ae49e07b0a103110722cbf67d86865f3:-1789333854,3309207b4210311009a096b1720fdf1c:-77823756,33752037b910311011f9484bbd78ea68:190265261,306524374510311070bf0da5cd94545e:-1402249923,b8e41d679ad87110d86a119ac12a52f0:-2013499348,2a03d5ef93987110eeb1de61dbfd49c5:2119822353,79ce49ef139871104bdf5cd90470ef97:-1594619810,424ecdaf7f9871102c3c5fe3bd93a2ea:-702393494,4fadc96fea987110c04baf6e257952eb:263296427,3f4dc16f4498711065d06351f5d6cdf4:-939905409,471d816fc6987110c17a7ce6217b6ee4:-129859669,53dc4dab67987110318867487de64af7:1886210492,9b9a492bf398711044796d89d93dec8b:-1979521249,032acda7849871106f77ae7ef9573874:-742376717,2ad9092b519871102e91d989f91d0fe7:365452268,89850817b3d43110e8321e21b054c546:1601408005,5bb448d397d431107b15fe10f7a5b1f3:-356206052,4448126beba321104ab627219960ccb7:1666549888,59c4d26788a32110fbe7dc6cb8d0693f:1621177508,c9845a279ba32110397c78a404764983:-308470605,8bf31a2764a32110355da62c3555f788:167724590,19ccf12f1f232110d70207012b1423ec:1493536185,22cb752f48232110c2ee1ed6fc5b9e55:2125215404,0afaf9eb9d2321107cdc7d96bfe10aec:1955938985,1a1ab1ab5e2321101b74b71888c97ee6:1511496754,0a99796b7d232110877296e817fd1637:-1942131020,8fe87d2bcb2321107a90b38cf65497b0:-52057729,8068f92b792321108382d7a10cc637bb:-1989505829,78cb69705d722110dce85e98012a8357:1423613023,7b6aa130257221108ee5a0ed9f9cbf9a:23530809,201ae13018722110c92ef8719a284a8d:-221928806,b5e9ed301a722110df291cf3360559f0:927298576,d7f825fc47322110727b532b6d2b28c0:663331150,1ce621bc683221103c2772cc61375b5d:2118162660,7968e8e82eb621109abd3df2846b2f94:1583374279,007a492e98a22110bd3efbb03aaacaa4:1605850761,d11a492e75a2211084e661c1c806b29b:-189699105,37b84d2a34a22110ecfa7e93eaf9433e:-92481848,c7b045a282a22110f6eb051f0d109f16:-306233864,ff70c16254a221106752984a93ef6759:905755249,ecfe7b46e7e2211047bdf7016e3ef54d:1082044273,8dee7b466be2211063c188244f39e248:-216033053,70debb4656e22110cebc3c4fe1086275:-1398160427,80aeb34626e22110615222ee30f3e80e:1401125934,ccdcbbc243e22110a7272f6ebd5449ff:-1642026848,e0ccfb8207e2211055e280812ec10988:527621063,7c4cb3c285e221106e61601c56b07e29:-241485827,6ae485dc01e225906bd5fc2ff00c28e0:-9128444,8740c9d837e22590d60a1bffaa85dcf4:-508201112,e87040b5245aa95045ec10e1e74ac564:-1441416745,5edfad8dfdd229502fc5abb45eb1e5cb:-1446164162,a38fa1cdd3d22950456be3b8e94a5f5d:1558842211,4b0f694d7cd229507667982996c6152e:25164944,fbfde54decd229507dabb6b37b802bf1:-1470998825,0c6ded4927d229508fa40f57639bc74e:2073025678</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>pete</sys_created_by>
+        <sys_created_on>2023-09-26 13:34:27</sys_created_on>
+        <sys_db_object display_value="" name="sys_script">sys_script</sys_db_object>
+        <sys_id>5564ff52f8af4d819858e295af0c16c9</sys_id>
+        <sys_metadata>68fce90997d229503f5e318c1253af6e</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Incident_update_old</sys_name>
+        <sys_package display_value="InteREST" source="x_653938_interest">836d672e97ad25103f5e318c1253af3d</sys_package>
+        <sys_parent display_value="Incident">c0ec2d28a9a0211076daa554cb57d963</sys_parent>
+        <sys_policy/>
+        <sys_scope display_value="InteREST">836d672e97ad25103f5e318c1253af3d</sys_scope>
+        <sys_scope_delete display_value="">09fe13ff0ab54d3c9503c8ae7b3cb2d9</sys_scope_delete>
+        <sys_update_name>sys_script_68fce90997d229503f5e318c1253af6e</sys_update_name>
+        <sys_update_version display_value="sys_script_68fce90997d229503f5e318c1253af6e">e2b4b68d97a171103f5e318c1253afc9</sys_update_version>
+        <sys_updated_by>pete</sys_updated_by>
+        <sys_updated_on>2023-09-26 13:34:27</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
