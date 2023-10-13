@@ -30,39 +30,32 @@
         <script><![CDATA[(function executeRule(current, previous /*null when async*/ ) {
     var jsnParam = '{"extID":"789682234759b110c57bfee3846d4341",';
     // get active end integration end points 
-    
-       
 
 
-        // get existing external numbers
-        var extNums = new GlideRecord('x_653938_interest_external_numbers');
-        extNums.addQuery('number', current.sys_id);
-        extNums.query();
-var firstJSON = 0;
 
-	 // get end point for the group 
-        var groups = new GlideRecord('x_653938_interest_groups');
-      
-	
-	//check if the current assignment group is ebonded
+
+    // get existing external numbers
+    var extNums = new GlideRecord('x_653938_interest_external_numbers');
+    extNums.addQuery('number', current.sys_id);
+    extNums.query();
+    var firstJSON = 0;
+
+    // get end point for the group 
+    var groups = new GlideRecord('x_653938_interest_groups');
+
+
+    //check if the current assignment group is ebonded
     if (groups.get('group', current.assignment_group)) {
 
-     //check if incident has already been ebonded - if yes, update otherwise open incident on remote ep 
-		if (checkIfEbonded()){
-			updateAllEndPoints()
-			
-		gs.info('BR sending updates to all endpoints');
-			
-		//gs.eventQueue('x_653938_interest.incident_update', current, ep.getValue('sys_id'), jsnParam);
-		}
-	
-	 
+        //check if incident has already been ebonded - if yes, update otherwise open incident on remote ep 
+        if (checkIfEbonded()) {
+            updateAllEndPoints()
 
+            gs.info('BR sending updates to all endpoints');
 
-
-
-
-} else {
+            //gs.eventQueue('x_653938_interest.incident_update', current, ep.getValue('sys_id'), jsnParam);
+        }
+    } else {
         gs.info('BR update - did not get a group');
     }
 
@@ -70,13 +63,15 @@ var firstJSON = 0;
 
 
 
-    function getUpdates(grp) {
+    function getUpdates(remoteSystem) {
+        // get updates from incident for the remote systems fields
+gs.info('BR update getUpdates system is  '+remoteSystem);
 
 
-        gs.info('BR update incident is assigned to ebond group ! ');
+try{
 
         var ep = new GlideRecord('x_653938_interest_target');
-        ep.get(grp.remote_system);
+        ep.get(remoteSystem);
 
         //	var remoteNum = new GLideRecord('x_653938_interest_external_numbers');
         //	remoteNum.addQuery('remote_system')
@@ -89,7 +84,8 @@ var firstJSON = 0;
         fields.query();
         // 			var numRecs = fields.getRowCount();
         // 			var recNum = 0 ;
-
+}
+		catch(err){gs.info('BR update Error is '+ err);}
         while (fields.next()) {
             // 				recNum = recNum +1; 
             //     gs.info('looping in the fields for update' + fields.getValue('field_name'));
@@ -113,58 +109,58 @@ var firstJSON = 0;
 
             }
 
-            //            gs.info('BR update jsnParam is now ' + jsnParam);
+            gs.info('BR update jsnParam is now ' + jsnParam);
 
         }
         return jsnParam;
     }
-function checkIfEbonded(){
-	      // check if endpoint is already listed in the external numbers for incident
-   		var extNumsCheck = getExtNums();
- 
-      //  gs.info('BR update ep is ' + groups.remote_system);
-        gs.info('BR update check if existing ebond is ' + extNumsCheck.hasNext());
-     //   gs.eventQueue('x_653938_interest.incident_update', current, ep.getValue('sys_id'), jsnParam);
-if (extNumsCheck.hasNext()){
-	return true;}
-	else{
-		return false;
-	}
-	
-	
-}
-	
-function updateAllEndPoints(){
-	var updateNumbers = getExtNums();
-	while (updateNumbers.next()){
-	var testCount = updateNumbers.getRowCount();
-	var tesVal = updateNumbers.external_number;
-	var testCheckit ='hi';
 
-	}
-	}
-	
-function getExtNums(){
-       var numsCheck = null;
-	    var numsCheck = new GlideRecord('x_653938_interest_external_numbers');
+    function checkIfEbonded() {
+        // check if endpoint is already listed in the external numbers for incident
+        var extNumsCheck = getExtNums();
+
+        //  gs.info('BR update ep is ' + groups.remote_system);
+        gs.info('BR update check if existing ebond is ' +extNumsCheck.hasNext() );
+        //   gs.eventQueue('x_653938_interest.incident_update', current, ep.getValue('sys_id'), jsnParam);
+        if (extNumsCheck.next()) {
+            return true;
+        } else {
+            return false;
+        }
+
+
+    }
+
+    function updateAllEndPoints() {
+        var updateNumbers = getExtNums();
+        while (updateNumbers.next()) {
+			gs.info(' line 108 remote_system value is '+updateNumbers.remote_system);
+			
+            jUpdates = getUpdates(updateNumbers.remote_system);
+
+gs.info('BR Function update all endpoint value is '+ jUpdates);
+           gs.eventQueue('x_653938_interest.incident_update', current, updateNumbers.remote_system, jUpdates);
+        }
+    }
+
+    function getExtNums() {
+
+        var numsCheck = new GlideRecord('x_653938_interest_external_numbers');
         numsCheck.addQuery('number', current.sys_id);
-        numsCheck.addQuery('remote_system', groups.remote_system);
+    //    numsCheck.addQuery('remote_system', groups.remote_system);
         numsCheck.query();
-		numsCheck.next();
-	var testCount = numsCheck.number;
- gs.info('BR update rows '+ numsCheck.getRowCount());
-	 return numsCheck;
-}
-})(current, previous);
-
-]]></script>
+      //  numsCheck.next();
+		gs.info('getExtNums count is '+ numsCheck.getRowCount());
+        return numsCheck;
+    }
+})(current, previous);]]></script>
         <sys_class_name>sys_script</sys_class_name>
         <sys_created_by>pete</sys_created_by>
         <sys_created_on>2023-09-26 13:33:11</sys_created_on>
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>cb74b64d97a171103f5e318c1253af6f</sys_id>
-        <sys_mod_count>58</sys_mod_count>
+        <sys_mod_count>73</sys_mod_count>
         <sys_name>Incident_update</sys_name>
         <sys_overrides/>
         <sys_package display_value="InteREST" source="x_653938_interest">836d672e97ad25103f5e318c1253af3d</sys_package>
@@ -172,7 +168,7 @@ function getExtNums(){
         <sys_scope display_value="InteREST">836d672e97ad25103f5e318c1253af3d</sys_scope>
         <sys_update_name>sys_script_cb74b64d97a171103f5e318c1253af6f</sys_update_name>
         <sys_updated_by>pete</sys_updated_by>
-        <sys_updated_on>2023-10-05 13:51:55</sys_updated_on>
+        <sys_updated_on>2023-10-09 14:26:14</sys_updated_on>
         <template/>
         <when>after</when>
     </sys_script>
