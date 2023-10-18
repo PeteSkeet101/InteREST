@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sysevent_script_action">
+    <sysevent_script_action action="DELETE">
+        <active>true</active>
+        <condition_script>!current.correlation_id.nil()</condition_script>
+        <description/>
+        <event_name>x_653938_interest.incident_update</event_name>
+        <name>Incident update</name>
+        <order>100</order>
+        <script><![CDATA[  
+gs.info("SA: starting incident update action script");
+
+
+//var jevtParm2 = global.JSON.parse(event.parm2);
+var tsttarget = event.parm1;
+gs.info('SA: parm1 target is '+tsttarget);
+
+try{
+var updateInc = new InteRESTIncidentUtils();
+
+var tstparm2 = event.parm2;
+gs.info('SA: tstparm2 is'+tstparm2);
+var updateResult = updateInc.update(tstparm2);
+//var updateResult = updateInc.update("{\"short_description\":\"e\"}");
+
+
+	
+	var strUpdate = global.JSON.stringify(updateResult);
+	var updates = global.JSON.parse(updateResult);
+// gs.info('SA: parm2 is '+JSON.stringify(updates));
+	
+	var shortdes = updates.short_description;
+//	gs.info('SA line 14: short description is '+ shortdes);
+	
+	
+	
+	var retryCount = '0' ;
+	//var retryCount = parseInt(event.parm2) + 1;
+    //gs.info('SA - include retured ' + updateResult);
+    if (!updateResult) {
+		var numRetries = gs.getProperty('x_653938_interest.Retry attempts');
+        if (retryCount > numRetries) {
+            var addTimeOut = new GlideRecord('x_653938_interest_inctimeout');
+            addTimeOut.eventname = event.name;
+            addTimeOut.incident = current.getValue('number');
+			addTimeOut.incident_id = current.getValue('sys_id');
+			addTimeOut.endpoint_id = event.parm1;
+			
+			var gr = new GlideRecord("x_653938_interest_target");
+			gr.get(event.parm1);
+			addTimeOut.remote_system = gr.getValue('name');
+			
+			addTimeOut.insert();
+	//		gs.info('SA timeout record written ');
+        } else {
+			var retryPeriod = gs.getProperty('x_653938_interest.retry period');
+            var retryTime = new GlideDateTime();
+            retryTime.addSeconds(retryPeriod);
+            gs.eventQueueScheduled('x_653938_interest.update', current, event.parm1, event.parm2, retryTime);
+			}
+	}
+
+}
+
+   catch (ex) {
+        gs.info('SA update incident app gave error: ' + ex.message);
+    }]]></script>
+        <synchronous>false</synchronous>
+        <sys_class_name>sysevent_script_action</sys_class_name>
+        <sys_created_by>pete</sys_created_by>
+        <sys_created_on>2023-05-04 18:38:26</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>8aeacd2e97a221103f5e318c1253af9c</sys_id>
+        <sys_mod_count>48</sys_mod_count>
+        <sys_name>Incident update</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="InteREST" source="x_653938_interest">836d672e97ad25103f5e318c1253af3d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="InteREST">836d672e97ad25103f5e318c1253af3d</sys_scope>
+        <sys_update_name>sysevent_script_action_8aeacd2e97a221103f5e318c1253af9c</sys_update_name>
+        <sys_updated_by>pete</sys_updated_by>
+        <sys_updated_on>2023-10-10 21:00:53</sys_updated_on>
+    </sysevent_script_action>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="InteREST">836d672e97ad25103f5e318c1253af3d</application>
+        <file_path/>
+        <instance_id>01cab999db41495010543feb6896194d</instance_id>
+        <instance_name>dev120844</instance_name>
+        <name>sysevent_script_action_8aeacd2e97a221103f5e318c1253af9c</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update sys_domain="global" table="sysevent_script_action"&gt;&lt;sysevent_script_action action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;condition_script&gt;!current.correlation_id.nil()&lt;/condition_script&gt;&lt;description/&gt;&lt;event_name&gt;x_653938_interest.incident_update&lt;/event_name&gt;&lt;name&gt;Incident update&lt;/name&gt;&lt;order&gt;100&lt;/order&gt;&lt;script&gt;&lt;![CDATA[  
+gs.info("SA: starting incident update action script");
+
+
+//var jevtParm2 = global.JSON.parse(event.parm2);
+var tsttarget = event.parm1;
+gs.info('SA: parm1 target is '+tsttarget);
+
+try{
+var updateInc = new InteRESTIncidentUtils();
+
+var tstparm2 = event.parm2;
+gs.info('SA: tstparm2 is'+tstparm2);
+var updateResult = updateInc.update(tstparm2);
+//var updateResult = updateInc.update("{\"short_description\":\"e\"}");
+
+
+	
+	var strUpdate = global.JSON.stringify(updateResult);
+	var updates = global.JSON.parse(updateResult);
+// gs.info('SA: parm2 is '+JSON.stringify(updates));
+	
+	var shortdes = updates.short_description;
+//	gs.info('SA line 14: short description is '+ shortdes);
+	
+	
+	
+	var retryCount = '0' ;
+	//var retryCount = parseInt(event.parm2) + 1;
+    //gs.info('SA - include retured ' + updateResult);
+    if (!updateResult) {
+		var numRetries = gs.getProperty('x_653938_interest.Retry attempts');
+        if (retryCount &gt; numRetries) {
+            var addTimeOut = new GlideRecord('x_653938_interest_inctimeout');
+            addTimeOut.eventname = event.name;
+            addTimeOut.incident = current.getValue('number');
+			addTimeOut.incident_id = current.getValue('sys_id');
+			addTimeOut.endpoint_id = event.parm1;
+			
+			var gr = new GlideRecord("x_653938_interest_target");
+			gr.get(event.parm1);
+			addTimeOut.remote_system = gr.getValue('name');
+			
+			addTimeOut.insert();
+	//		gs.info('SA timeout record written ');
+        } else {
+			var retryPeriod = gs.getProperty('x_653938_interest.retry period');
+            var retryTime = new GlideDateTime();
+            retryTime.addSeconds(retryPeriod);
+            gs.eventQueueScheduled('x_653938_interest.update', current, event.parm1, event.parm2, retryTime);
+			}
+	}
+
+}
+
+   catch (ex) {
+        gs.info('SA update incident app gave error: ' + ex.message);
+    }]]&gt;&lt;/script&gt;&lt;synchronous&gt;false&lt;/synchronous&gt;&lt;sys_class_name&gt;sysevent_script_action&lt;/sys_class_name&gt;&lt;sys_created_by&gt;pete&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2023-05-04 18:38:26&lt;/sys_created_on&gt;&lt;sys_domain&gt;global&lt;/sys_domain&gt;&lt;sys_domain_path&gt;/&lt;/sys_domain_path&gt;&lt;sys_id&gt;8aeacd2e97a221103f5e318c1253af9c&lt;/sys_id&gt;&lt;sys_mod_count&gt;48&lt;/sys_mod_count&gt;&lt;sys_name&gt;Incident update&lt;/sys_name&gt;&lt;sys_overrides/&gt;&lt;sys_package display_value="InteREST" source="x_653938_interest"&gt;836d672e97ad25103f5e318c1253af3d&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="InteREST"&gt;836d672e97ad25103f5e318c1253af3d&lt;/sys_scope&gt;&lt;sys_update_name&gt;sysevent_script_action_8aeacd2e97a221103f5e318c1253af9c&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;pete&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2023-10-10 21:00:53&lt;/sys_updated_on&gt;&lt;/sysevent_script_action&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>1455317601</payload_hash>
+        <record_name>Incident update</record_name>
+        <reverted_from/>
+        <source>da00da9d97f161103f5e318c1253afc4</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>pete</sys_created_by>
+        <sys_created_on>2023-10-10 21:00:53</sys_created_on>
+        <sys_id>2931687197bd71103f5e318c1253af39</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>18b1b6482dc0000001</sys_recorded_at>
+        <sys_updated_by>pete</sys_updated_by>
+        <sys_updated_on>2023-10-10 21:00:53</sys_updated_on>
+        <type>Script Action</type>
+        <update_guid>ad31687146bd7110951255115c24e738</update_guid>
+        <update_guid_history>ad31687146bd7110951255115c24e738:1455317601,d5b147953075311080284f904d1d821c:-1498638157,36204b15df7531103119867092329761:-1681391977,a89fb21526753110adfd58d2114583dd:-2087277583,0bdb6e7647113110b258fe90180874e5:1107650993,735c59f6614131109c3be8af0a92db40:1008784225,306ae3d6f2c13110855ce3d231d00db8:-1493282591,dccf8f058345311085cd157cf4d74324:223287895,83794f8dfb053110c1799b8e653f0d8f:7802583,aaf843cd630531102210aa538e98c646:614014060,8bb8c38d1e053110bf3e056af283c4f0:-1542548961,7b38c38d37053110f3bb2168f8c54e67:-954656708,e32daec168c131104d1d9689e1674f37:-381257071,46bceac1d1c13110942c78b9afc57d7d:-1011713494,d031864919013110c1b88b2599a6727b:-2023857783,a3be31c5790131103f3ccee154a86b33:-1011713494,2ae5ee709d0171105bbebd32970a0d58:-1847956765,cb108aaa52303110328276dc4a24f608:473215211,3c1082221a703110723425591b79ac02:1709257128,175f555e94303110fe1d84dffdbf9098:-2074234258,bc4e911e9b303110b7053d488866a27e:-2118206608,2ced999a5c303110588dba58e91abe77:360472577,d50c44fbbf6471106b3ed638b777ead8:-2045314671,705b44fbec647110810251669c7bd1c6:1367735378,980bc8bb6764711095bcdac41aa329b8:820429828,559c171690e0311002610fbad36e5839:-880720828,aedb57d2cde03110ea0a71f6d2be0b70:-621388700,d9aac3d2ada03110ffa771d0829086a0:552095369,5888cf12a8a031106c3c1c9b0911264a:1142373897,b46f440a9a2721109edf3532848f9b47:-469145028,7c4f8c464027211001dfacd5cbb0f42f:-1834623399,f876488175c32110e07ee4f3c4d09239:-1408834146,5592f934e872211031f69eb98900bfc7:1139372806,dbeee9342a722110a143b37c098a3bc0:1439004626,a4ae6934b5722110eaa55adf1f1d77ba:-1086769998,f77d6934b0722110d405036ba8168829:1790571698,f41da13420722110b0b7e7077608af9b:-1900948258,052ba1b0437221104d4a288b7f9f408b:1666931325,680861bcea3221105ebc74ddd84c7081:778127221,c006a93c32322110d2abd882c70802de:-2127296897,8de3e9b804322110b698f62c91d6f639:1345681166,fad165f458322110a498dfaed8987a67:-2036654473,24d0a1f4fe322110f46831697d9b1fc2:1517430413,2160e5b4553221100dd75653e37fe2dc:995164056,672ba0acaeb621103c49d6602bbddaff:881466060,6bda2c2c67b6211058b6ea4848fce834:-35328725,fcaaece883b62110b38f0a800e82bfbb:-101502036,3ed8a0a899b6211021a76f1cb47c90ed:-1344558422,b4db416eaba2211039bb8002be9e52d4:1147967840</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>pete</sys_created_by>
+        <sys_created_on>2023-10-12 13:02:55</sys_created_on>
+        <sys_db_object display_value="" name="sysevent_script_action">sysevent_script_action</sys_db_object>
+        <sys_id>0a05e30936e541e8833f96c4e151fad9</sys_id>
+        <sys_metadata>8aeacd2e97a221103f5e318c1253af9c</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Incident update</sys_name>
+        <sys_package display_value="InteREST" source="x_653938_interest">836d672e97ad25103f5e318c1253af3d</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="InteREST">836d672e97ad25103f5e318c1253af3d</sys_scope>
+        <sys_scope_delete display_value="">09fe13ff0ab54d3c9503c8ae7b3cb2d9</sys_scope_delete>
+        <sys_update_name>sysevent_script_action_8aeacd2e97a221103f5e318c1253af9c</sys_update_name>
+        <sys_update_version display_value="sysevent_script_action_8aeacd2e97a221103f5e318c1253af9c">2931687197bd71103f5e318c1253af39</sys_update_version>
+        <sys_updated_by>pete</sys_updated_by>
+        <sys_updated_on>2023-10-12 13:02:55</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
