@@ -70,6 +70,48 @@
             <sys_user/>
             <type>.end_split</type>
         </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>remote_group_name</element>
+            <position>5</position>
+            <sys_created_by>pete</sys_created_by>
+            <sys_created_on>2023-10-23 14:10:00</sys_created_on>
+            <sys_id>a9df35b5974231103f5e318c1253af2f</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_653938_interest_groups" sys_domain="global" view="Default view">c5944506975ee9503f5e318c1253af73</sys_ui_section>
+            <sys_updated_by>pete</sys_updated_by>
+            <sys_updated_on>2023-10-23 14:10:00</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>outbound</element>
+            <position>6</position>
+            <sys_created_by>pete</sys_created_by>
+            <sys_created_on>2023-10-23 14:17:28</sys_created_on>
+            <sys_id>0b810639974231103f5e318c1253afc6</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_653938_interest_groups" sys_domain="global" view="Default view">c5944506975ee9503f5e318c1253af73</sys_ui_section>
+            <sys_updated_by>pete</sys_updated_by>
+            <sys_updated_on>2023-10-23 14:17:28</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>inbound</element>
+            <position>7</position>
+            <sys_created_by>pete</sys_created_by>
+            <sys_created_on>2023-10-23 14:18:15</sys_created_on>
+            <sys_id>1ab10a39974231103f5e318c1253afe8</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_653938_interest_groups" sys_domain="global" view="Default view">c5944506975ee9503f5e318c1253af73</sys_ui_section>
+            <sys_updated_by>pete</sys_updated_by>
+            <sys_updated_on>2023-10-23 14:18:15</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
         <sys_ui_section action="INSERT_OR_UPDATE">
             <caption/>
             <header>false</header>

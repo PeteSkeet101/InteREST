@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element db_object_id="666a104e979ae9503f5e318c1253afe7" label="Groups" max_length="40" name="x_653938_interest_groups" type="collection">
         <element label="Group" max_length="32" name="group" reference="sys_user_group" type="reference"/>
+        <element label="Inbound" max_length="5" name="inbound" type="boolean"/>
+        <element label="Outbound" max_length="5" name="outbound" type="boolean"/>
+        <element label="Remote Group Name" mandatory="true" max_length="35" name="remote_group_name" type="string"/>
         <element label="Remote System" max_length="32" name="remote_system" reference="x_653938_interest_target" type="reference"/>
         <index name="index">
             <element name="group"/>

@@ -28,12 +28,8 @@
         <rest_variables/>
         <role_conditions/>
         <script><![CDATA[(function executeRule(current, previous /*null when async*/ ) {
-   // var jsnParam = '{"extID":"789682234759b110c57bfee3846d4341",';
-    // get active end integration end points 
-var jsnParam= '';
 
-
-
+    var jsnParam = '';
 
     // get existing external numbers
     var extNums = new GlideRecord('x_653938_interest_external_numbers');
@@ -54,7 +50,7 @@ var jsnParam= '';
 
             gs.info('BR sending updates to all endpoints');
 
-            //gs.eventQueue('x_653938_interest.incident_update', current, ep.getValue('sys_id'), jsnParam);
+
         }
     } else {
         gs.info('BR update - did not get a group');
@@ -66,33 +62,35 @@ var jsnParam= '';
 
     function getUpdates(remoteSystem) {
         // get updates from incident for the remote systems fields
-gs.info('BR update getUpdates system is  '+remoteSystem);
+        gs.info('BR update getUpdates system is  ' + remoteSystem);
 
 
-try{
+        try {
 
-        var ep = new GlideRecord('x_653938_interest_target');
-        ep.get(remoteSystem);
-
-        //	var remoteNum = new GLideRecord('x_653938_interest_external_numbers');
-        //	remoteNum.addQuery('remote_system')
+            var ep = new GlideRecord('x_653938_interest_target');
+            ep.get(remoteSystem);
 
 
-        // get fields for remote system 
-        var fields = new GlideRecord('x_653938_interest_fields');
-        fields.addQuery('module', current.sys_class_name);
-        fields.addQuery('target.name', ep.getValue('name'));
-        fields.query();
-        // 			var numRecs = fields.getRowCount();
-        // 			var recNum = 0 ;
-}
-		catch(err){gs.info('BR update Error is '+ err);}
+
+            // get fields for remote system 
+            var fields = new GlideRecord('x_653938_interest_fields');
+            fields.addQuery('module', current.sys_class_name);
+            fields.addQuery('target.name', ep.getValue('name'));
+            fields.query();
+
+        } catch (err) {
+            gs.info('BR update Error is ' + err);
+        }
+
+        //check if each of the fields have been updated
         while (fields.next()) {
-            // 				recNum = recNum +1; 
-            //     gs.info('looping in the fields for update' + fields.getValue('field_name'));
+
 
             if (current[fields.getValue('field_name')] != previous[fields.getValue('field_name')]) {
+
+                //add field and value to JSON variable
                 if (firstJSON > 0) {
+
                     jsnParam = jsnParam + ',';
                 }
 
@@ -109,9 +107,6 @@ try{
                 jsnParam = jsnParam + '}';
 
             }
-
-            gs.info('BR update jsnParam is now ' + jsnParam);
-
         }
         return jsnParam;
     }
@@ -120,9 +115,8 @@ try{
         // check if endpoint is already listed in the external numbers for incident
         var extNumsCheck = getExtNums();
 
-        //  gs.info('BR update ep is ' + groups.remote_system);
-        gs.info('BR update check if existing ebond is ' +extNumsCheck.hasNext() );
-        //   gs.eventQueue('x_653938_interest.incident_update', current, ep.getValue('sys_id'), jsnParam);
+        gs.info('BR update check if existing ebond is ' + extNumsCheck.hasNext());
+
         if (extNumsCheck.next()) {
             return true;
         } else {
@@ -132,28 +126,38 @@ try{
 
     }
 
+
+    //Add event to send update to each system
+	
+	
     function updateAllEndPoints() {
         var updateNumbers = getExtNums();
+
+		
+        //get a list of all the ebonded systems and their numbers 
+		
+		
         while (updateNumbers.next()) {
-			try{
-			gs.info(' line 108 remote_system value is '+updateNumbers.remote_system);
-			jsnParam = '{"extID":"'+updateNumbers.external_number+'",';
-            jUpdates = getUpdates(updateNumbers.remote_system);
-			}
-			catch(err){gs.info('Error is '+err);}
-gs.info('BR Function update all endpoint value is '+ jUpdates);
-           gs.eventQueue('x_653938_interest.incident_update', current, updateNumbers.remote_system, jUpdates);
+            try {
+                gs.info(' line 108 remote_system value is ' + updateNumbers.remote_system);
+                jsnParam = '{"extID":"' + updateNumbers.external_number + '",';
+                jUpdates = getUpdates(updateNumbers.remote_system);
+            } catch (err) {
+                gs.info('Error is ' + err);
+            }
+            gs.info('BR Function update all endpoint value is ' + jUpdates);
+            gs.eventQueue('x_653938_interest.incident_update', current, updateNumbers.remote_system, jUpdates);
         }
     }
+
+    //get list of all external numbers for the current record
+
 
     function getExtNums() {
 
         var numsCheck = new GlideRecord('x_653938_interest_external_numbers');
         numsCheck.addQuery('number', current.sys_id);
-    //    numsCheck.addQuery('remote_system', groups.remote_system);
         numsCheck.query();
-      //  numsCheck.next();
-		gs.info('getExtNums count is '+ numsCheck.getRowCount());
         return numsCheck;
     }
 })(current, previous);]]></script>
@@ -163,7 +167,7 @@ gs.info('BR Function update all endpoint value is '+ jUpdates);
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>cb74b64d97a171103f5e318c1253af6f</sys_id>
-        <sys_mod_count>79</sys_mod_count>
+        <sys_mod_count>81</sys_mod_count>
         <sys_name>Incident_update</sys_name>
         <sys_overrides/>
         <sys_package display_value="InteREST" source="x_653938_interest">836d672e97ad25103f5e318c1253af3d</sys_package>
@@ -171,7 +175,7 @@ gs.info('BR Function update all endpoint value is '+ jUpdates);
         <sys_scope display_value="InteREST">836d672e97ad25103f5e318c1253af3d</sys_scope>
         <sys_update_name>sys_script_cb74b64d97a171103f5e318c1253af6f</sys_update_name>
         <sys_updated_by>pete</sys_updated_by>
-        <sys_updated_on>2023-10-18 13:09:05</sys_updated_on>
+        <sys_updated_on>2023-10-24 18:30:19</sys_updated_on>
         <template/>
         <when>after</when>
     </sys_script>

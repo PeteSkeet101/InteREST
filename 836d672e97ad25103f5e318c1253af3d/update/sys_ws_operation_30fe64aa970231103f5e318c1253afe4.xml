@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ws_operation">
+    <sys_ws_operation action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <consumes>application/json,application/xml,text/xml</consumes>
+        <consumes_customized>false</consumes_customized>
+        <default_operation_uri/>
+        <enforce_acl>cf9d01d3e73003009d6247e603f6a990</enforce_acl>
+        <http_method>POST</http_method>
+        <name>post</name>
+        <operation_script><![CDATA[(function process(/*RESTAPIRequest*/ request, /*RESTAPIResponse*/ response) {
+
+    this.status = '200';
+    var respObj = {}; //declare the response object
+    var payload = request.body.data;  //retrieving the JSON body
+    var number = payload.number;  //getting the  number from JSON
+    var callerid = payload.callerid;
+    var state = payload.state;
+    var category = payload.category;
+    var impact = payload.impact;
+    var urgency = payload.urgency;
+    var short_description = payload.short_description;
+    var description = payload.description;
+
+ 
+
+    var grinc = new GlideRecord("incident");
+    grinc.addQuery("number", number);
+    grinc.query();
+    if (grinc.next()) { // To update data on the existing incidents
+
+        grinc.caller_id = callerid;
+        grinc.state = state;
+        grinc.category = category;
+        grinc.impact = impact;
+        grinc.urgency = urgency;
+        grinc.short_description = short_description;
+        grinc.description = description;
+        grinc.update();
+        this.status = '200';
+        respObj.body = {
+            "message": "Updation Success!",
+            "detail": "Incident " + grinc.number + " updated successfully"
+        };
+    } else  {
+		// if (callerid) { //create incident if  when callerid is not empty
+
+        grinc.initialize();
+      //  grinc.caller_id = callerid;
+      //  grinc.state = state;
+    //    grinc.category = category;
+      //  grinc.impact = impact;
+      //  grinc.urgency = urgency;
+        grinc.short_description = short_description;
+      //  grinc.description = description;
+        grinc.insert();
+
+        this.status = '200';
+        respObj.body = {
+            "message": "Creation Success!",
+            "detail": "Incident " + grinc.number + " created successfully"
+       
+		};
+		
+   } 
+		
+	//	else { //ignore the creation if there is no caller info
+//         this.status = '400';
+//         respObj.body = {
+//             "message": "Incident Ignored",
+//             "detail": "Caller email is not received from Request"
+//         };
+
+    //}
+
+    if (this.status == '200') {
+        response.setBody(respObj);
+        response.setStatus(this.status);
+        return response;
+    } else {
+        var setError= new sn_ws_err.ServiceError();  //this API used to set the custom error messages
+        setError.setStatus(this.status);
+        setError.setMessage(respObj.body.message);
+        setError.setDetail(respObj.body.detail);
+        return setError;
+    }
+
+})(request, response);]]></operation_script>
+        <operation_uri>/api/x_653938_interest/incident</operation_uri>
+        <produces>application/json,application/xml,text/xml</produces>
+        <produces_customized>false</produces_customized>
+        <relative_path>/</relative_path>
+        <request_example/>
+        <requires_acl_authorization>true</requires_acl_authorization>
+        <requires_authentication>true</requires_authentication>
+        <requires_snc_internal_role>true</requires_snc_internal_role>
+        <short_description/>
+        <sys_class_name>sys_ws_operation</sys_class_name>
+        <sys_created_by>pete</sys_created_by>
+        <sys_created_on>2023-10-25 16:12:24</sys_created_on>
+        <sys_id>30fe64aa970231103f5e318c1253afe4</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>post</sys_name>
+        <sys_package display_value="InteREST" source="x_653938_interest">836d672e97ad25103f5e318c1253af3d</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="InteREST">836d672e97ad25103f5e318c1253af3d</sys_scope>
+        <sys_update_name>sys_ws_operation_30fe64aa970231103f5e318c1253afe4</sys_update_name>
+        <sys_updated_by>pete</sys_updated_by>
+        <sys_updated_on>2023-11-01 13:38:18</sys_updated_on>
+        <web_service_definition display_value="Incident">44a5b8bf9746e1503f5e318c1253af71</web_service_definition>
+        <web_service_version/>
+    </sys_ws_operation>
+</record_update>
